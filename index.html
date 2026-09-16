@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สินค้าปริ้นเตอร์ ทั้งหมด 8 ยี่ห้อ - VANDA OA</title>
+    <!-- นำเข้าฟอนต์ Prompt เพื่อความสวยงาม ทันสมัย -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* --- 1. Header & Navigation --- */
+        header {
+            background-color: #0b4f6c; /* สีน้ำเงินเข้มตามภาพ */
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 50px; /* สำหรับใส่โลโก้จริง */
+            background-color: #fff;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+        /* --- Page Title Section --- */
+        .page-header {
+            background: linear-gradient(rgba(11, 79, 108, 0.85), rgba(11, 79, 108, 0.85)), 
+                        url('https://images.unsplash.com/photo-1612815150356-4297174b105d?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .page-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- Product Section Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Product Grid Layout --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- Product Card Styling --- */
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        /* รูปภาพสินค้า */
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 15px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Badge แสดงแบรนด์ */
+        .brand-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #0b4f6c;
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* รายละเอียดสินค้า */
+/* รายละเอียดสินค้า */
+       /* ปรับกล่องเนื้อหาให้ตัวอักษรชิดขอบบนสุด */
+        .product-info {
+            padding: 0 15px 12px 15px; /* ปรับ padding-top เป็น 0 */
+            display: flex;
+            flex-direction: column;
+            justify-content: column; /* ดันเนื้อหาขึ้นบนสุด */
+        }
+
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-top: 5px; /* ลบระยะห่างด้านบนตัวอักษร */
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-specs {
+            font-size: 0.85rem;
+            color: #666;
+            list-style: none;
+            margin-bottom: 8px;
+        }
+
+        .product-specs li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .product-specs li::before {
+            content: "•";
+            color: #e62429;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #e62429;
+        }
+
+        .btn-detail {
+            background-color: #0b4f6c;
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-detail:hover {
+            background-color: #08384d;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Search Bar Styling --- */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 2px 4px 2px 12px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 6px 0;
+            font-size: 0.85rem;
+            background: transparent;
+        }
+
+        .search-btn {
+            background-color: #e62429;
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            background-color: #c01e23;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+     <header>
+        <div class="logo-container">
+            <img src="https://media.tarad.com/v/vandaoa/img-lib/bns_20120410132659_th.JPG" alt="Vanda OA Logo" class="logo-img">   
+            <div class="logo-text">
+                <h1>VANDA OA</h1>
+                <span>บริษัท แวนด้า โอเอ จำกัด</span>
+            </div>
+        </div>
+
+        <!-- เพิ่มช่องค้นหาสินค้าตรงนี้ -->
+        <div class="search-container">
+            <input type="text" placeholder="ค้นหาสินค้า..." class="search-input">
+            <button class="search-btn">ค้นหา</button>
+        </div>
+
+        <nav>
+            <ul class="product-specs">
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/index.html#">หน้าแรก</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A12.html">สินค้า</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A9.html">FAQ</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A10.html">เกี่ยวกับเรา</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A11.html">ติดต่อ</a></li>
+                    </ul>
+        </nav>
+    </header>
+    
+    <!-- Page Header Banner -->
+    <section class="page-header">
+        <h2>เครื่องปริ้นเตอร์คุณภาพสูง 8 แบรนด์ชั้นนำ</h2>
+        <p>ซ่อมและจำหน่าย เครื่องปริ้นเตอร์ เครื่องถ่ายเอกสาร พร้อมบริการหลังการขายมืออาชีพ</p>
+    </section>
+
+    <!-- Container สินค้า -->
+    <main class="container">
+        <div class="product-grid">
+
+            <!-- ยี่ห้อที่ 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_d0d3cbda26_b.jpg" alt="Epson EcoTank L3250">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">ROLLER KIT EPSON DS410 DS520 DS560 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿600</div>
+                       
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ยี่ห้อที่ 2: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150330154229_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SHEET GUIDE,REAR,ASSY LQ2190 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿700</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- ยี่ห้อที่ 3: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150408104447_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SHEET GUIDE,ASSY LQ590 (แท้) NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 4: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150416104435_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SHEET GUIDE ASSY LQ630 NEW (แท้)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿150</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 5: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170330121203_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SHEET GUIDE EPSON LQ-310 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 6: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210126161616_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SHEET GUIDE EPSON LQ 310 มือ2</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿150</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 7: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_4edf188ca5_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SHEET GUIDE EPSON LQ 2090II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿850</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 8: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150330153004_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PRINT HEAD EPON LQ 2180i (มือสอง)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿800</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 9: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170320145955_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PRINT HEAD EPSON LQ-300+,300+II (มือสอง)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,000</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 10: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170628134323_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PRINT HEAD EPSON LQ 2090 (มือสอง)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,000</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 11: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170628134928_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PRINT HEAD EPSON LQ 630 (มือสอง)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,000</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 12: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170630151912_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PRINT HEAD EPSON PLQ 20 มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+             <!-- ยี่ห้อที่ 13: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_812bf90ba3_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PRINT HEAD EPSON LQ 2190 มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,200</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- ยี่ห้อที่ 14: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_c13dd5fe67_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">KNOB EPSON LQ 590 II 2090 II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 15: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_b5f0c33d01_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">KNOB EPSON LQ 590 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿100</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 16: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_8f8429f217_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">KNOB EPSON LQ 310 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿250</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 17: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20130805180752_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PAPER EJECT ASSY EPSON LQ 590 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿350</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 18: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150408103604_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PAPER EJECT ASSY LQ310 NEW แท้</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿400</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 19: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150408105123_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PAPER EJECT ASSY LQ2190 NEW (แท้)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿850</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 20: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210325153100_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PAPER EJECT ASSY EPSON LQ 590ll NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿620</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 21: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_b3858753ab_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">EJECT EPSON LQ 2090 II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 22: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20120919173456_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD LQ-300+ มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿800</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 23: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20121213162742_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ2180I มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,000</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 24: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20130802155605_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ590,2090 (มือสอง)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,800</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 25: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20120919173038_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD LQ-300+ll มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,000</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 26: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20160212150923_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ-310 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿2,300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 27: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20161021104707_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ-2190 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿4,500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 28: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210422160047_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ 590II new</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿3,800</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- ยี่ห้อที่ 29: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210422161023_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ 2090II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿3,500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 30: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_5e98a2b5a9_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ 590II มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿2,500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 31: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_52935e2d69_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MAIN BOARD EPSON LQ-2190 มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,600</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 32: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_bfd58252d1_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CARD LAN EPSON LQ 590 2090 2190 2180 2170 มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿800</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_2b9ff2fc5f_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PAPER GUIDE ASSY SUPPORT EPSON LQ 590 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿200</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+               <!-- ยี่ห้อที่ 34: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_8675013216_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PAPER GUIDE ASSY SUPPORT EPSON LQ 2090 /1170 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿200</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+               <!-- ยี่ห้อที่ 35: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20171206135359_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CARIAGE ASSY EPSON 310 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">160</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+               <!-- ยี่ห้อที่ 36: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20121213171419_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TRACTER EPSON LQ2180I,2170,2080 มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+               <!-- ยี่ห้อที่ 37: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170222152300_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TRACTER EPSON LQ 590(NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿750</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+               <!-- ยี่ห้อที่ 38: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20200720172615_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TRACTER EPSON LQ 310 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+               <!-- ยี่ห้อที่ 39: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210325163708_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TRACTER ASSY EPSON LQ 590II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,200</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+               <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://tarad-image.obs.ap-southeast-3.myhuaweicloud.com/shop/v/vandaoa/Product/7538014/spd_0f1481c949_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TRACTOR ASSY LQ 630 (LEFT) NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿250</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+               <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://tarad-image.obs.ap-southeast-3.myhuaweicloud.com/shop/v/vandaoa/Product/7538013/spd_d90bdae710_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TRACTOR ASSY LQ 630 (RIGHT) NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿250</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+               <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210325170037_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">POWER SUPPLY EPSON LQ 590ll,2090ll NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+               <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20121213170306_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">DC POWER SUPPLY EPSON LQ2180I มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿400</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+                <!-- อันนี้: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_2017072792229_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">POWER SUPPLY EPSON LQ-300+/300+II มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170908111728_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">POWER SUPPLY EPSON LQ 590 ,2090 มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20200820174213_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">POWER SUPPLY EPSON LQ 2190 มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210126182112_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">POWER SUPPLY EPSON LQ310 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210524102805_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">POWER SUPPLY EPSON LQ 630 LQ 310 รุ่นใหม่ มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿700</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_5593f40fb3_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">POWER SUPPLY EPSN LQ 2080 I มือสอง</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20161021100258_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY,LOWER (BODY) EPSON LQ-2190 (NEW)</h3>
+                    <div class="product-footer">
+                            <div class="product-price">฿1,200</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20161021103151_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY ,UPPER EPSON LQ-2190 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,350</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20170330112622_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING PANEL EPSON 2190 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20190823100849_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY LOWER EPSON LQ 630 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20190823101154_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY UPPER EPSON LQ 630 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ยี่ห้อที่ 33: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20190823102122_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY UPPER EPSON LQ 310 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿700</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- ล่าสุด: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20190823102417_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY LOWER EPSON LQ 310 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_4ca2df916a_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY UPPER EPSON LQ 590 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿520</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_7fd55f0751_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY LOWER EPSON LQ 590 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿520</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_85b6c767cc_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY LOWER EPSON LQ 590II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_c68ef382c0_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">HOUSING ASSY,UPPER (BODY) EPSON LQ 2090 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿600</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20190611115000_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">COVER PRINTER ASSY EPSON LQ-2090 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿350</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150330155254_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">COVER PRINTER REAR,ASSY LQ2190 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿350</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150408100301_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">COVER ASSY LQ630 NEW(แท้)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿150</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20190607104316_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">COVER PRINTER ASSY EPSON LQ-2190 (NEW)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿400</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20201007103617_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">COVER ASSY FRONT EPSON LQ-590 NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿150</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_e4801c6080_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">COVER PRINTER ASSY LQ 2090II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_2cabca44d5_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">COVER PRINTER REAR,ASSY LQ 2090II NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150416105730_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY EPSON LQ 590 NEW (แท้)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20150416110911_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY EPSON LQ 2090 NEW (แท้)</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿300</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20200116165408_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY EPSON LQ 2190 แท้</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20200116171541_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE DETECTOR PW (SENSER) EPSON LQ 2190 แท้</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿180</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1:ล่าสุด -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">EPSON</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_a69d68c3af_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY 300+,300+II แท้ NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20130905120330_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FUSER FLIM HP LASER 1010,1200,1320,1020,P2015,2035,   2055,Pro 400 401 402</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿150</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20130905122149_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FILM FUSER HP LASERJET 2300,2420,2430,P3005</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿250</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20130905123002_b.JPG" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FILM HP COLOR LASERJET 2700,3600,3800,CP3505 new</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,500</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210305133627_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FUSER FILM HP M252dw M252n M274n M277dw M277n M252 M274 277 252 1600 2600 1215 2025 2320 new</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿350</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_bc1681ee5f_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FILM HP 3015 M501 M506 M507 M527 M521NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿250</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20160212154144_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FLIM HP 3525/4700/3530/4525 new</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿1,200</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210210145700_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FUSER FLIM HP LASER 1010,1200,1320,1020,P2015, ORIGINAL</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿220</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210212153940_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FUSER FLIM HP COLOR LASERJET PRO M377/M477/M452 new</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿450</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_20210216180450_b.jpg" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FUSER FILM Hp P4010 P4014 P4015P4515 M4555 600 M601 M602 M603 M604 M605 M606 M630 ใหม่</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿600  </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_a69d68c3af_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY 300+,300+II แท้ NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_a69d68c3af_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY 300+,300+II แท้ NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_a69d68c3af_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY 300+,300+II แท้ NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_a69d68c3af_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY 300+,300+II แท้ NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_a69d68c3af_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY 300+,300+II แท้ NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- 1: EPSON -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="brand-badge">HP</span>
+                    <img src="https://media.tarad.com/v/vandaoa/img-lib/spd_a69d68c3af_b.1" alt="Canon PIXMA G3730">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">CABLE HEAD ASSY 300+,300+II แท้ NEW</h3>
+                    <div class="product-footer">
+                        <div class="product-price">฿550</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+           
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 VANDA OA Co., Ltd. บริษัท แวนด้า โอเอ จำกัด - จำหน่ายและบริการเครื่องปริ้นเตอร์ครบวงจร</p>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ดึง Element ช่องค้นหา ปุ่ม และ การ์ดสินค้า
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            // ฟังก์ชันสำหรับกรองสินค้า
+            function filterProducts() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+
+                productCards.forEach(card => {
+                    // ดึงข้อความจากชื่อสินค้า สเปก และราคา
+                    const textContent = card.textContent.toLowerCase();
+
+                    // ถ้ามีคำค้นหาให้แสดง ถ้าไม่มีให้ซ่อน
+                    if (textContent.includes(searchTerm)) {
+                        card.style.display = 'flex'; // แสดงสินค้า
+                    } else {
+                        card.style.display = 'none'; // ซ่อนสินค้า
+                    }
+                });
+            }
+
+            // ค้นหาอัตโนมัติขณะพิมพ์
+            if (searchInput) {
+                searchInput.addEventListener('keyup', filterProducts);
+                searchInput.addEventListener('input', filterProducts);
+            }
+
+            // ค้นหาเมื่อคลิกปุ่ม
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    filterProducts();
+                });
+            }
+        });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.product-card').forEach(card => {
+          card.style.cursor = 'pointer';
+          card.addEventListener('click', () => {
+            window.location.href = 'file:///C:/Users/User/Documents/Jamthima/A11.html'; // ใส่ชื่อไฟล์หรือ URL หน้าติดต่อตรงนี้
+          });
+        });
+        const logo = document.querySelector('.logo-container'); // หรือเปลี่ยนเป็นคลาสรูปโลโก้ของคุณ เช่น .logo
+        if (logo) {
+          logo.style.cursor = 'pointer';
+          logo.addEventListener('click', () => {
+            window.location.href = 'index.html'; // ลิงก์ไปหน้าแรก (ใส่ชื่อไฟล์หน้าหลักของคุณ)
+          });
+        }
+      });
+    </script>
+    
+</body>
+</html>
